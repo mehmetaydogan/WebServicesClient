@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Liste des catégories</title>
@@ -12,44 +7,41 @@ and open the template in the editor.
         <script src="js/libs/knockout/knockout-min.js"></script>
         <script src="js/libs/knockout.mapping/knockout.mapping.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="js/categorie.js"></script>
-        <script>
-          
-            $(document).ready(function(){
-                $.getJSON('http://localhost:8080/biblio/webresources/categorie/', function(categories) {
-                    console.log(categories);
-                    /*
-                    Cette function est le controlleur de la vue 
-                    Elle assure la communication entre la vue et le modèle, une sorte de pont quoi! 
-                    */    
-                    ko.applyBindings(new ViewModel(categories));
-                });
-            });
-        </script>
+        <script src="js/classes/categorie.js"></script>
+        <script src="js/models/viewModel.js"></script>
+        <script src="js/libs/etc/getCategories.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
     <body>
-      <h2>Categories</h2>
-        <div >
-            <table>
-                <tr>
-                    <th>Id</th>
-                    <th>Nom</th>
-                    <th>déscription</th>
-                </tr>
-                <tbody data-bind="foreach: categories">
-                    <tr>
-                        <td>
-                            <label data-bind='text: id' ></label>
-                        </td>
-                         <td>
-                            <label data-bind='text: nom' ></label>
-                        </td>
-                         <td>
-                            <label data-bind='text: description' ></label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+      <h2>Catégories</h2>
+        <div>
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: categories">
+                        <tr>
+                            <td data-bind='text: id'></td>
+                            <td>
+                                <input data-bind='value: nom' />
+                            </td>
+                            <td>
+                                <input data-bind='value: description'/>
+                            </td>
+                            <td>
+                                <input type="button" value="Update"/>
+                                <input type="button" value="Supprimer" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="error"></div>
     </body>
