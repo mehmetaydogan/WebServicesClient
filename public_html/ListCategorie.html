@@ -12,16 +12,45 @@ and open the template in the editor.
         <script src="js/libs/knockout/knockout-min.js"></script>
         <script src="js/libs/knockout.mapping/knockout.mapping.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="js/categorie.js"></script>
         <script>
+          
             $(document).ready(function(){
-                $.getJSON('http://localhost:8080/biblio/webresources/categorie/', function(data) {
-                    console.log(data);
-		});
+                $.getJSON('http://localhost:8080/biblio/webresources/categorie/', function(categories) {
+                    console.log(categories);
+                    /*
+                    Cette function est le controlleur de la vue 
+                    Elle assure la communication entre la vue et le modèle, une sorte de pont quoi! 
+                    */    
+                    ko.applyBindings(new ViewModel(categories));
+                });
             });
         </script>
     </head>
     <body>
-        <div>Liste des catégories</div>
-        <table id="table"></table>
+      <h2>Categories</h2>
+        <div >
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>déscription</th>
+                </tr>
+                <tbody data-bind="foreach: categories">
+                    <tr>
+                        <td>
+                            <label data-bind='text: id' ></label>
+                        </td>
+                         <td>
+                            <label data-bind='text: nom' ></label>
+                        </td>
+                         <td>
+                            <label data-bind='text: description' ></label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="error"></div>
     </body>
 </html>
