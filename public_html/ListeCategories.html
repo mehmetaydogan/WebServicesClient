@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liste des catégories</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/knockout/knockout-min.js"></script>
+        <script src="js/libs/knockout.mapping/knockout.mapping.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="js/classes/categorie.js"></script>
+        <script src="js/models/viewModel.js"></script>
+        <script src="js/libs/etc/initCategories.js"></script>
+        <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <style type="text/css">
+            body {
+              padding-top: 20px;
+              padding-bottom: 40px;
+            }
+
+            /* Custom container */
+            .container-narrow {
+              margin: 0 auto;
+              max-width: 700px;
+            }
+            .container-narrow > hr {
+              margin: 30px 0;
+            }
+
+            /* Main marketing message and sign up button */
+            .jumbotron {
+              margin: 60px 0;
+              text-align: center;
+            }
+            .jumbotron h1 {
+              font-size: 72px;
+              line-height: 1;
+            }
+            .jumbotron .btn {
+              font-size: 21px;
+              padding: 14px 24px;
+            }
+
+            /* Supporting marketing content */
+            .marketing {
+              margin: 60px 0;
+            }
+            .marketing p + h4 {
+              margin-top: 28px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-narrow">
+            <div class="masthead">
+                <div class="nav nav-pills pull-right" style="">
+                    <label>Recherche : </label>
+                    <input id="rechercher" type="text" class="form-control" placeholder="Rechercher une catégorie..." data-bind="value: filter, valueUpdate: 'afterkeydown'">
+                </div>
+                <h3 class="muted">Catégories</h3>
+            </div>
+            <hr>
+            <div>
+                <div class="text-right">
+                    <span class="glyphicon glyphicon-plus" data-bind="click: add" >Ajouter</span>
+                </div>
+                <br />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: filterCategories">
+                        <tr>
+                            <td data-bind='text: id'></td>
+                            <td>
+                                <input data-bind='value: nom' placeholder="Nom..." type="text" class="form-control"/>
+                            </td>
+                            <td>
+                                <input data-bind='value: description' placeholder="Description..." type="text" class="form-control"/>
+                            </td>
+                            <td>
+                                <span class="glyphicon glyphicon-ok" title="Valider" style="color:green" data-bind="click: $parent.update"></span>
+                                <span class="glyphicon glyphicon-remove" title="Supprimer" style="color:red" data-bind="click: $parent.remove"></span>
+                                <span class="glyphicon glyphicon-book" title="Voir les livres" data-bind="click: $parent.books"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="error"></div>
+    </body>
+</html>
