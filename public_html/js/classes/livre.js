@@ -3,7 +3,7 @@ var Book = function (livre) {
     this.titre = ko.observable(livre.titre);
     this.resume = ko.observable(livre.resume);
     this.isbn = ko.observable(livre.isbn);
-    if(livre.ecrit_par!=undefined) {
+    if(livre.categorie!=undefined) {
         this.categorie = ko.observable(livre.categorie.id);
     } else {
         this.categorie = ko.observable(livre.categorie);

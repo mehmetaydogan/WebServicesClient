@@ -13,62 +13,43 @@
         <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
-        <style type="text/css">
-            body {
-              padding-top: 20px;
-              padding-bottom: 40px;
-            }
-
-            /* Custom container */
-            .container-narrow {
-              margin: 0 auto;
-              max-width: 700px;
-            }
-            .container-narrow > hr {
-              margin: 30px 0;
-            }
-
-            /* Main marketing message and sign up button */
-            .jumbotron {
-              margin: 60px 0;
-              text-align: center;
-            }
-            .jumbotron h1 {
-              font-size: 72px;
-              line-height: 1;
-            }
-            .jumbotron .btn {
-              font-size: 21px;
-              padding: 14px 24px;
-            }
-
-            /* Supporting marketing content */
-            .marketing {
-              margin: 60px 0;
-            }
-            .marketing p + h4 {
-              margin-top: 28px;
-            }
-        </style>
     </head>
-    <body>
-        <div class="container-narrow">
-            <div class="masthead">
-                <div class="nav nav-pills pull-right" style="">
-                    <label>Recherche : </label>
-                    <input id="rechercher" type="text" class="form-control" placeholder="Rechercher un livre..." data-bind="value: filter, valueUpdate: 'afterkeydown'">
-                </div>
-                <h3 class="muted">Livres</h3>
-            </div>
-            <hr>
+    <body class>
+        <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">TP 3 - Web Services</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="ListeCategories.html">Catégories <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a href="ListeLivres.html">Livres </a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" id="rechercher" class="form-control" placeholder="Recherche un livre..." data-bind="value: filter, valueUpdate: 'afterkeydown'">
+                <a class="btn btn-default" data-bind="click: add">Ajouter un livre</a>
+              </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://github.com/mehmetaydogan/WebServicesClient">Github</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+        <br />
             <div>
-                <div class="text-right">
-                    <span class="glyphicon glyphicon-plus" data-bind="click: add" >Ajouter</span>
-                </div>
                 <br />
-                <table class="table table-bordered">
+                <table class="table table-striped table-hover">
                     <thead>
-                        <tr>
+                        <tr >
                             <th>Id</th>
                             <th>Titre</th>
                             <th>Résumé</th>
@@ -108,16 +89,20 @@
                             <td>
                                 <input data-bind='value: ecrit' placeholder="Écrit par..." type="text" class="form-control"/>
                             </td>
-                            <td>
-                                <span class="glyphicon glyphicon-ok" title="Valider" style="color:green" data-bind="click: $parent.update"></span>
-                                <span class="glyphicon glyphicon-remove" title="Supprimer" style="color:red" data-bind="click: $parent.remove"></span>
+                            <td class="col-lg-2">
+                                <a class="btn btn-success" data-bind="click: $parent.update">Valider</a>
+                                <a class="btn btn-danger" data-bind="click: $parent.delete">Supprimer</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <a href="ListeCategories.html">Liste des catégories</a>
             </div>
-        </div>
-        <div class="error"></div>
+        <div class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand">© Copyrights - AGLIF Fatima Zahra | AYDOGAN Mehmet</a>
+          </div>
+      </div>
+    </div>
     </body>
 </html>

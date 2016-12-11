@@ -1,8 +1,10 @@
 $(document).ready(function(){
     $.getJSON('http://localhost:8080/biblio/webresources/livre/', function(livres) {
         var categorieId = GetURLParameter('categorie');
-        for(var i = livres.length; i--;){
-            if (livres[i].categorie.id != categorieId) livres.splice(i, 1);
+        if(categorieId !== undefined) {
+            for(var i = livres.length; i--;){
+                if (livres[i].categorie.id != categorieId) livres.splice(i, 1);
+            }
         }
         ko.applyBindings(new ViewModelLivre(livres));
     });
